@@ -107,6 +107,7 @@ pipeline {
             }
         }
         stage('Deploy') {
+            agent any
             steps {
                 sh 'docker-compose pull'
                 sh 'docker-compose up -d'
