@@ -1,0 +1,68 @@
+version: '3'
+services:
+  discovery-server:
+    build:
+      context: ./discovery-server
+    ports:
+      - 8761:8761
+  api-gateway:
+    build:
+      context: ./api-gateway
+    ports:
+      - 8080:8080
+    depends_on:
+      - discovery-server
+  drug-service:
+    build:
+      context: ./drug-service
+    ports:
+      - 8082:8082
+    depends_on:
+      - mysql
+      - discovery-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/drug-service
+      - SPRING_DATASOURCE_USERNAME=user1
+      - SPRING_DATASOURCE_PASSWORD=1031987
+  appointment-service:
+    build:
+      context: ./appointment-service
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysql
+      - discovery-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/appointment-service
+      - SPRING_DATASOURCE_USERNAME=user1
+      - SPRING_DATASOURCE_PASSWORD=1031987
+  patient-service:
+    build:
+      context: ./patient-service
+    ports:
+      - 8083:8083
+    depends_on:    depends_on:
+      - api-gateway
+      - drug-service
+      - appointment-service
+      - patient-service
+      - mysql
+      - discovery-service
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/patient-service
+      - SPRING_DATASOURCE_USERNAME=user1
+      - SPRING_DATASOURCE_PASSWORD=1031987
+  hospitalia-project:
+    build:
+      context: ./hospitalia-project
+    ports:
+      - 4200:4200
+    depends_on:
+      - api-gateway
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=1031987
+      - MYSQL_DATABASE=drug-service,appointment-service,patient-service
