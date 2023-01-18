@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /appointment-service
 
 # Copy the JAR file into the container
-COPY target/*.jar app-appointment.jar
+COPY target/*.jar /appointment-service/app-appointment.jar
 
 # Expose the application's port
 EXPOSE 8081
