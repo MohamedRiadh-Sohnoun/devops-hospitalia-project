@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Set the working directory
-WORKDIR /appDiscovery
+WORKDIR /discovery-server
 
 # Copy the JAR file into the container
 COPY target/*.jar app-discovery.jar
