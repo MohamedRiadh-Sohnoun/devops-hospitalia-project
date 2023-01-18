@@ -19,7 +19,7 @@ pipeline {
         stage('Build Discovery Server ') {
             agent any
             when {
-                changeset "**/discovery-service/*.*"
+                changeset "/discovery-service/*.*"
                 beforeAgent true
             }
             steps {
