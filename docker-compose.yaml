@@ -12,8 +12,6 @@ services:
       context: ./api-gateway
     ports:
       - 8080:8080
-    depends_on:
-      - discovery-server
   drug-service:
     build:
       context: ./drug-service
@@ -21,7 +19,6 @@ services:
       - 8082:8082
     depends_on:
       - mysql
-      - discovery-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/drug-service
       - SPRING_DATASOURCE_USERNAME=user1
@@ -33,7 +30,6 @@ services:
       - 8081:8081
     depends_on:
       - mysql
-      - discovery-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/appointment-service
       - SPRING_DATASOURCE_USERNAME=user1
@@ -44,12 +40,7 @@ services:
     ports:
       - 8083:8083
     depends_on:
-      - api-gateway
-      - drug-service
-      - appointment-service
-      - patient-service
       - mysql
-      - discovery-service
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/patient-service
       - SPRING_DATASOURCE_USERNAME=user1
