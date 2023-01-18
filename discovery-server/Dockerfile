@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /discovery-server
 
 # Copy the JAR file into the container
-COPY target/*.jar app-discovery.jar
+COPY target/*.jar /discovery-server/app-discovery.jar
 
 # Expose the application's port
 EXPOSE 8761
