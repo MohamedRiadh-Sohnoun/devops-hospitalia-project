@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Set the working directory
-WORKDIR /appApi
+WORKDIR /api-gateway
 
 # Copy the JAR file into the container
 COPY target/*.jar app-api.jar
