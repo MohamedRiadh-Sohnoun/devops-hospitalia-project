@@ -7,7 +7,6 @@ pipeline {
          stage('Checkout'){
             agent any
             steps{
-                //Changez avec votre lien gitlab
                 git branch: 'main', url: 'https://gitlab.com/mrsoh/devops-project.git'
             }
         }
