@@ -1,5 +1,4 @@
-FROM node:19.0.3-alpine
-
+FROM node:latest as node
 
 WORKDIR /Hospitalia
 
