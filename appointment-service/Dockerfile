@@ -1,7 +1,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Set the working directory
-WORKDIR /appAppointment
+WORKDIR /appointment-service
 
 # Copy the JAR file into the container
 COPY target/*.jar app-appointment.jar
