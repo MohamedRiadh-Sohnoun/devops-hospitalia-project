@@ -41,7 +41,7 @@ services:
       context: ./patient-service
     ports:
       - 8083:8083
-    depends_on:    depends_on:
+    depends_on:
       - api-gateway
       - drug-service
       - appointment-service
