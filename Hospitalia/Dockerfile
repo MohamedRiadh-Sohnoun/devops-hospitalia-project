@@ -1,7 +1,7 @@
 FROM node:19.0.3-alpine
 
 
-WORKDIR /app-hospitalia
+WORKDIR /Hospitalia
 
 COPY package*.json ./
 
