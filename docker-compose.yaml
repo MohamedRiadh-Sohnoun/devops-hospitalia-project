@@ -47,7 +47,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=1031987
   hospitalia-project:
     build:
-      context: ./hospitalia-project
+      context: ./Hospitalia
     ports:
       - 4200:4200
     depends_on:
